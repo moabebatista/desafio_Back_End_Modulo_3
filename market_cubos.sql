@@ -1,0 +1,24 @@
+-- CRIAÇÃO DO BANCO DE DADOS
+CREATE DATABASE market_cubos;
+
+-- CRIAÇÃO DA TABELA DE USUARIOS
+CREATE TABLE IF NOT EXISTS usuarios(
+	ID SERIAL PRIMARY KEY,
+  	nome TEXT NOT NULL,
+  	nome_loja TEXT NOT NULL,
+  	email TEXT NOT NULL UNIQUE,
+  	senha TEXT NOT NULL
+);
+
+-- CRIAÇÃO DA TABELA DE PRODUTOS
+CREATE TABLE IF NOT EXISTS produtos(
+	ID SERIAL PRIMARY KEY,
+  	usuario_id INTEGER NOT NULL,
+  	nome TEXT NOT NULL,
+  	quantidade INTEGER NOT NULL,
+  	categoria text,
+  	preco INTEGER NOT NULL,
+  	descricao TEXT NOT NULL,
+  	imagem TEXT,
+  	FOREIGN KEY(usuario_id) REFERENCES usuarios (ID)
+);
